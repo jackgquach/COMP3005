@@ -26,7 +26,7 @@ A Python application for managing student records in a PostgreSQL database with 
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/jackgquach/COMP3005
 
 ## Video Demo
 
