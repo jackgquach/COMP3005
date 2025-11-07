@@ -1,5 +1,4 @@
 import psycopg2
-from psycopg2 import sql
 
 # Database configuration
 DB_CONFIG = {
@@ -10,7 +9,7 @@ DB_CONFIG = {
     'port': '5432'
 }
 
-def get_db_connection():
+def start_db_connection():
     """
     Establish and return a connection to PostgreSQL database.
     Parameters: 
@@ -70,7 +69,7 @@ def setup_database():
     Returns: Boolean indicating success
     """
 
-    connection = get_db_connection()
+    connection = start_db_connection()
     if not connection:
         return False
     
@@ -107,7 +106,7 @@ def getAllStudents():
     Returns: List of student records or None if error.
     """
     
-    connection = get_db_connection()
+    connection = start_db_connection()
     if not connection:
         return None
     
@@ -148,7 +147,7 @@ def addStudent(first_name, last_name, email, enrollment_date):
         print("All fields are required.")
         return False
     
-    connection = get_db_connection()
+    connection = start_db_connection()
     if not connection:
         return False
     
@@ -194,7 +193,7 @@ def updateStudentEmail(student_id, new_email):
         print("Email cannot be empty.")
         return False
     
-    connection = get_db_connection()
+    connection = start_db_connection()
     if not connection:
         return False
     
@@ -238,7 +237,7 @@ def deleteStudent(student_id):
     Returns: Boolean indicating success
     """
     
-    connection = get_db_connection()
+    connection = start_db_connection()
     if not connection:
         return False
     
@@ -273,7 +272,7 @@ def test_connection():
     """
     Test database connection - useful for debugging
     """
-    connection = get_db_connection()
+    connection = start_db_connection()
     if connection:
         print("SUCCESSFUL DATABASE CONNECTION")
         close_db_connection(connection)
